@@ -354,7 +354,7 @@
 
   
 
-  
+
 
         </div>
         
@@ -636,27 +636,21 @@
 
 
 
-
   <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-
   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-   <script type="text/javascript">
-        var gitalk = new Gitalk({
-          clientID: '040f4bef3caa6ffa1b20',
-          clientSecret: '2d184ded1768f9f09ba352dbe352c73e563c5868',
-          repo: 'issues-for-blog',
-          owner: 'ZXJNVRGVP',
-          admin: ,
-          id: ,
-          labels: ,
-          perPage: ,
-          pagerDirection: '',
-          createIssueManually: ,
-          distractionFreeMode: false
-        })
-        gitalk.render('gitalk-container')           
-       </script>
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '',
+      clientSecret: '',
+      repo: 'issues-for-blog',
+      owner: 'ZXJNVRGVP',
+      admin: ['ZXJNVRGVP'],
+      id: location.pathname,
+      distractionFreeMode: 'false'
+    })
+    gitalk.render('gitalk-container')
+  </script>
 
   
 

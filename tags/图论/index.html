@@ -2,14 +2,14 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>归档: 2019 - ZXJ_Hans&#39; Blog</title>
+<title>标签: 图论 - ZXJ_Hans&#39; Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="ZXJ_Hans&#39; Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/图论/index.html">
 <meta property="og:site_name" content="ZXJ_Hans&#39; Blog">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
@@ -134,58 +134,144 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        2019
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-07T01:59:04.000Z">2019-07-07</time>
-                        <a href="/efzdpp/" class="has-link-black-ter is-size-6">二分图最大匹配</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <a href="/Welcome/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="https://pic.superbed.cn/item/5d1f0cd6451253d178dfedbf.jpg" alt="欢迎来到我的博客！">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-05T08:12:25.000Z">2019-07-05</time>
-                        <a href="/Welcome/" class="has-link-black-ter is-size-6">欢迎来到我的博客！</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-        </div>
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">图论</a></li>
+        </ul>
+        </nav>
     </div>
 </div>
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-07T01:59:04.000Z">2019-07-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 分钟 读完 (大约 1509 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/efzdpp/">二分图最大匹配</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><ul>
+<li><p><strong>匹配</strong>：任意两条边都没有公共端点的边的集合被称为图的一组匹配。</p>
+</li>
+<li><p><strong>最大匹配</strong>：在二分图中，包含边数最多的一组匹配。</p>
+</li>
+<li><p><strong>匹配边与非匹配边</strong>：对于任意一组匹配S，属于S的边被称为匹配边，不属于S的被称为非匹配边。</p>
+</li>
+<li><p><strong>匹配点与非匹配点</strong>：匹配边的端点被称为匹配点，非匹配边的端点被称为非匹配点。</p>
+</li>
+<li><p><strong>增广路</strong>：连结两个非匹配点的路径，使得非匹配边与匹配边交替出现。</p>
+</li>
+<li><p><strong>完备匹配</strong>:给定一张二分图，其左部、右部端点数量都为N，如果该二分图的最大匹配包含N条匹配边，则称该二分图具有完备匹配。</p>
+<p>接下来我们看几张图来帮助理解。</p>
+<p><img src="https://img.renfei.org/2013/08/2.png" alt></p>
+</li>
+</ul>
+<p>如图2，这是一个二分图。</p>
+<p><img src="https://img.renfei.org/2013/08/3.png" alt></p>
+<p>如图3，所有红色的边就是该二分图的一组<strong>匹配</strong>。很显然，两条红色的边都没有公共端点。</p>
+<p><img src="https://img.renfei.org/2013/08/4.png" alt></p>
+<p>再看图4，此时所有红色的边组成的也是一组匹配，而且是<strong>最大匹配</strong>，甚至还是<strong>完备匹配</strong>。因为匹配边的数量不能再多了，而且匹配边的数量和左右部端点数相同。</p>
+<p><img src="https://img.renfei.org/2013/08/5.png" alt></p>
+<p>如图5，又是一张二分图，红色边的是一组匹配，红色的点就是匹配点了。</p>
+<p><img src="https://img.renfei.org/2013/08/6.png" alt></p>
+<p>如图6，就是图5的一条增广路了，可以看到，第一个端点和最后一个端点都是非匹配点，途中经过的边是非匹配边，匹配边的方式交替的。</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>关于二分图匹配的问题，最常见的应该就是求二分图的最大匹配了吧。。。</p>
+<p>举个例子，看这张图：</p>
+<p><img src="https://img.renfei.org/2013/08/0.png" alt></p>
+<p>图中男女可以凑成一对的被连上了边，那我们要尽可能的促成他人的爱情，抽象出来，也就是求二分图最大匹配了。</p>
+<p>（虽然我觉得这样的人际关系很渣，但没办法它是服务于学术的呢。。。）</p>
+<p><img src="https://ae01.alicdn.com/kf/HTB1m7sRXbr1gK0jSZFDq6z9yVXaR.jpg" alt></p>
+<p>为了解决这么一个<del>渣男渣女</del>问题，我们需要用到一个和这个问题一样让人感觉不太舒服的算法（笑。</p>
+<h1 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h1><p><strong>匈牙利算法</strong>，又称<strong>增广路算法</strong>，顾名思义，运用到了增广路的性质，这里就对增广路的一些性质进行补充。</p>
+<h3 id="增广路的性质（建议结合上面增广路的定义看）"><a href="#增广路的性质（建议结合上面增广路的定义看）" class="headerlink" title="增广路的性质（建议结合上面增广路的定义看）"></a>增广路的性质（建议结合上面增广路的定义看）</h3><ul>
+<li>长度为奇数，这是显然的，因为是交替的嘛。</li>
+<li>路径上第奇数号的边是非匹配边，偶数号的是匹配边。</li>
+</ul>
+<p>看到以上性质，你有没有明白些什么？？</p>
+<p>没有，好，那就容我BB两句。<del>有我也要BB</del></p>
+<p>如果我们把增广路上的每条边状态取反，就能得到一个新匹配S’，而且比原来的匹配S大了1！</p>
+<p>进一步我们可以得到推论：</p>
+<p>==二分图的一组匹配S是最大匹配，当且仅当图中不存在S的增广路。==</p>
+<h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><p>有了以上知识，我们可以开始看匈牙利算法的过程了：</p>
+<ol>
+<li>设S为空集，即所有边都是非匹配边。</li>
+<li>寻找增广路，再把路径上所有边的匹配状态取反，得到了一个更大的匹配S’。</li>
+</ol>
+<p>算法的关键在于，怎么找到一条增广路。</p>
+<p>事实上这还是挺简单的，也没啥高深思想。就是尝试给每个左部节点去找右部节点来匹配。右部节点y能与左部节点x匹配，需要满足下列条件之一：</p>
+<ol>
+<li>y本身就是非匹配点。此时边(x,y)本身就是一条增广路了，长度为1。</li>
+<li>y已经和左部节点x’匹配了，但可以从x’出发找到另一个右部节点y’与之匹配。那我们就把x’和y’连上，再连x和y。这样，x-&gt;y-&gt;x’-&gt;y’就构成了一条增广路。</li>
+</ol>
+<p>程序方面，这里是用深度优先搜索实现的。递归地从x出发寻找增广路，如果找到了，就在回溯的同时对沿路的边进行取反。还要同时用全局vis数组来记录访问状态，避免重复搜索。</p>
+<p>这里再推荐一个简单易懂的<a href="https://blog.csdn.net/dark_scope/article/details/8880547" target="_blank" rel="noopener">文章</a>，不清楚的同学可以再去看看。</p>
+<p>匈牙利算法的正确性基于贪心思想，因为一旦一个点成为了匹配点，至多因为找到增广路而更换匹配对象，不会再变回非匹配点。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><pre><code class="c++">bool dfs(int x)
+{
+    for(int e=head[x];e;e=nxt[e])
+    {
+        int y=ver[e];
+        if(vis[y]) continue;
+        if(!match[y]||dfs(match[y])) //match记录匹配点
+        {
+            match[y]=x;    //修改匹配点，递归查找增广路
+            return true;
+        }
+    }
+    return false;
+}
+
+int main()
+{
+    for(int i=1;i&lt;=n;i++)
+    {
+        memset(vis,0,sizeof(vis));    //每次搜完记得初始化访问状态
+        if(dfs(i)) ans++;
+    }
+}</code></pre>
+<h3 id="适用情况"><a href="#适用情况" class="headerlink" title="适用情况"></a>适用情况</h3><p>二分图匹配能适用的模型有两个要素：</p>
+<ol>
+<li>节点能分成两个独立的集合，每个集合内部有0条边。</li>
+<li>每个节点只能玉1条匹配边相连。</li>
+</ol>
+<p>同时满足以上两个要素，就该考虑使用二分图匹配了。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
 
 
 </div>

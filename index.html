@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>ZXJ_Hans&#39; Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="ZXJ_Hans&#39; Blog">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="ZXJ_Hans&#39; Blog">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ZXJ_Hans&#39; Blog">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
++<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="ZXJ_Hans&#39; Blog" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item is-active" href="/">主页</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-21T06:50:17.000Z">2019-09-21</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 629 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/P1196/">P1196</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="算法：带权并查集"><a href="#算法：带权并查集" class="headerlink" title="算法：带权并查集"></a>算法：带权并查集</h2><p>这道题有两种算法，但主要思想都是并查集，区别在于是否有路径压缩。</p>
+<h4 id="1-不带路径压缩"><a href="#1-不带路径压缩" class="headerlink" title="1. 不带路径压缩"></a>1. 不带路径压缩</h4><p>  此时fa[x]就表示排在第x号战舰前面的那个战舰的编号。集合的“代表”就是最前面的战舰的编号。<br>  让树上每条边带上权值1，这样树上两点之间的距离-1就是二者相隔的战舰数量。<br>  注意，这样写的话在find函数中就不能加上路径压缩的优化。</p>
+<h4 id="2-带路径压缩"><a href="#2-带路径压缩" class="headerlink" title="2.带路径压缩"></a>2.带路径压缩</h4><p>  在考虑路径压缩时，我们应该在建立一个数组d，d[x]记录战舰x与fa[x]之间的边的权值。<br>  我们知道，在路径压缩时，会把x指向此时的树根。我们应该对find函数做一些修改，把d[x]更新为从x到树根的路径上的所有边权之和。</p>
+<pre><code class="cpp">inline int find(int x)
+{
+    if(x==f[x]) return x;
+    int root=find(f[x]);
+    d[x]+=d[f[x]];
+    return f[x]=root;
+}</code></pre>
+<p>  当接收到Cxy指令时，分别执行find(x),find(y)完成查询和路径压缩。如果两者的返回值相同，则说明x,y在同一列之中。<br>  那么，d[x]和d[y]都指向了共同的树根，分别表示在x，y之前的战舰数量。二者之差再减1就是x和y之间间隔的战舰数量。<br>  当接收到Mxy指令时，把x的树根作为y的树根的子节点，连接的新边的权值应给设为合并之前集合y的大小。（因为y集合全部排在x之前）<br>  因此还需要增加一个size数组记录每个集合的大小。</p>
+<pre><code class="cpp">void merge(int x,int y)
+{
+    x=find(x);y=find(y);
+    f[x]=y;d[x]=size[y];
+    size[y]+=size[x];
+}</code></pre>
+<p>下面是完整代码</p>
+<pre><code class="cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cmath&gt;
+using namespace std;
+
+const int N=30000;
+int t,f[N+5],d[N+5],size[N+5];
+
+inline int find(int x)
+{
+    if(x==f[x]) return x;
+    int root=find(f[x]);
+    d[x]+=d[f[x]];
+    return f[x]=root;
+}
+
+void merge(int x,int y)
+{
+    x=find(x);y=find(y);
+    f[x]=y;d[x]=size[y];
+    size[y]+=size[x];
+}
+
+int main()
+{
+    cin&gt;&gt;t;
+    char o;int i,j;
+    for(int i=1;i&lt;=N;i++)
+    {
+        f[i]=i;
+        d[i]=0;
+        size[i]=1;
+    }
+    while(t--)
+    {
+        cin&gt;&gt;o&gt;&gt;i&gt;&gt;j;
+        if(o==&#39;M&#39;) merge(i,j);
+        if(o==&#39;C&#39;)
+        {
+            int x=find(i),y=find(j);
+            if(x!=y)
+            {
+                cout&lt;&lt;&quot;-1&quot;&lt;&lt;endl;
+                continue;
+            }
+            else
+            {
+                int q=abs(d[i]-d[j])-1;
+                cout&lt;&lt;q&lt;&lt;endl;
+            }
+        }
+    }
+    return 0;
+}</code></pre>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/搭配购买/" class="image is-7by1">
+            <img class="thumbnail" src="https://sm.ms/image/SH76lZgnWJIUpmQ" alt="题解 luogu P1455 【搭配购买】">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-26T11:53:49.000Z">2019-08-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 632 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/搭配购买/">题解 luogu P1455 【搭配购买】</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="正解"><a href="#正解" class="headerlink" title="正解"></a>正解</h2><p>​    正解十分简单。所有互相有关联的云可以视作捆绑销售，使用并查集合在一起，得到若干个由原来的物品组成的新物品，最后跑01背包即可。</p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+using namespace std;
+
+const int N=10005;
+int n,m,w,val[N],wor[N],f[N],fa[N];
+int p[N],v[N],id[N],tot;
+bool vis[N];
+
+inline int get()
+{
+    int res=0;char c=getchar();
+    while(c&lt;&#39;0&#39;||c&gt;&#39;9&#39;) c=getchar();
+    while(c&gt;=&#39;0&#39;&amp;&amp;c&lt;=&#39;9&#39;)
+    {
+        res=res*10+c-&#39;0&#39;;
+        c=getchar();
+    }
+    return res;
+}
+
+int find(int x)
+{
+    if(x==fa[x]) return x;
+    else return fa[x]=find(fa[x]);
+}
+
+int main()
+{
+    n=get(),m=get(),w=get();
+    for(int i=1;i&lt;=n;i++)
+        wor[i]=get(),val[i]=get();
+    for(int i=1;i&lt;=n;i++) fa[i]=i;
+    int x,y,fi;
+    for(int i=1;i&lt;=m;i++)
+    {
+        x=get(),y=get();
+        int fx=find(x),fy=find(y);
+        if(fx!=fy) fa[fx]=fy;
+    }
+    for(int i=1;i&lt;=n;i++)
+    {
+        fi=find(i);
+        if(!vis[fi])
+        {
+            tot++;
+            id[fi]=tot;
+            v[tot]+=val[i];
+            p[tot]+=wor[i];
+            vis[fi]=true;
+        }
+        else
+        {
+            v[id[fi]]+=val[i];
+            p[id[fi]]+=wor[i];
+        }
+    }
+    for(int i=1;i&lt;=tot;i++)
+        for(int j=w;j&gt;=p[i];j--)
+            f[j]=max(f[j],f[j-p[i]]+v[i]);
+    int ans=0;
+    for(int i=0;i&lt;=w;i++) ans=max(ans,f[i]);
+    printf(&quot;%d&quot;,ans);
+    return 0;
+}</code></pre>
+<h2 id="来个复杂点的解法"><a href="#来个复杂点的解法" class="headerlink" title="来个复杂点的解法"></a>来个复杂点的解法</h2><p>思路：Tarjan缩点+01背包</p>
+<p>我知道并查集就可以惹qwq，但不知为何写了个tarjan</p>
+<p>反正思路很简单，tarjan缩点，缩出来的点就是有关系的点揉在一起的，再在新点上进行01背包。</p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#define ll long long
+using namespace std;
+const int N=1e4+100;
+int c[N],d[N],cost[N],val[N];
+int next[N],head[N],go[N],tot;
+inline void add(int u,int v){
+    next[++tot]=head[u];head[u]=tot;go[tot]=v;
+    next[++tot]=head[v];head[v]=tot;go[tot]=u;
+}
+int dfn[N],st[N],low[N],co[N],col,num,top;
+int Tarjan(int u){
+    dfn[u]=low[u]=++num;
+    st[++top]=u;
+    for(int i=head[u],v;i;i=next[i]){
+        v=go[i];
+        if(!dfn[v]){
+            Tarjan(v);
+            low[u]=min(low[u],low[v]);
+        }else if(!co[v]){
+            low[u]=min(low[u],dfn[v]);
+        }
+    }
+    if(low[u]==dfn[u]){
+        co[u]=++col;
+        cost[col]+=c[u];
+        val[col]+=d[u];
+        while(st[top]!=u){
+            cost[col]+=c[st[top]];
+            val[col]+=d[st[top]];
+            co[st[top]]=col;
+            --top;
+        }
+        --top;
+    }
+}
+int f[2][N];
+int main(){
+    freopen(&quot;buy.in&quot;,&quot;r&quot;,stdin);
+    freopen(&quot;buy.out&quot;,&quot;w&quot;,stdout);
+    int n,m,w;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;w;
+    for(int i=1;i&lt;=n;i++)
+    scanf(&quot;%d%d&quot;,&amp;c[i],&amp;d[i]);
+    for(int i=1,u,v;i&lt;=m;i++){
+        scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
+        add(u,v);
+    }
+    for(int i=1;i&lt;=n;i++)
+    if(!dfn[i])Tarjan(i);
+    memset(f,0xcf,sizeof(f));
+    f[0][0]=0;
+    for(int i=1;i&lt;=col;i++){
+        for(int j=0;j&lt;=w;j++)
+        f[i&amp;1][j]=f[(i-1)&amp;1][j];
+        for(int j=cost[i];j&lt;=w;j++)
+        f[i&amp;1][j]=max(f[(i-1)&amp;1][j],f[(i-1)&amp;1][j-cost[i]]+val[i]);
+    }
+    int ans=0;
+    for(int j=0;j&lt;=w;j++)
+    ans=max(ans,f[col&amp;1][j]);
+    cout&lt;&lt;ans&lt;&lt;endl;
+}</code></pre>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/Strongly Conected City/" class="image is-7by1">
+            <img class="thumbnail" src="https://sm.ms/image/Lbgh3eBstJZcKNf" alt="题解 CF475B 【Strongly Connected City】">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-26T11:18:37.000Z">2019-08-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 340 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/Strongly Conected City/">题解 CF475B 【Strongly Connected City】</a>
+            
+        </h1>
+        <div class="content">
+            <p>​    其实只要稍加思考便可以发现一个这张图的一个特性：<strong>只要边缘的四个点是相连通的，整张图就是联通的</strong></p>
+<p>​    根据题意，可以发现，图中的任何一个节点，都可以通过在边缘的四条边中的某个点直接抵达（一溜就到了）。</p>
+<p>​    如果四个顶点相连通，就代表四条边缘的边上的点都可以通过顶点到达，而中间的点只要顺着所处的边的方向走一点可以到边缘，所以所有点都可以到所有点。</p>
+<p>​    相反的，如果有四角上的顶点从相邻的四角上的顶点无法到达，也就意味着所有点都到不了这个顶点（因为只有两条边连着外面）。</p>
+<p>​    因此只要判断四个顶点上的边方向看是否联通即可。</p>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &quot;cstdio&quot;
+#include &quot;cstring&quot;
+using namespace std;
+
+int n, m, din[22], dim[22];
+bool ans = true;
+string a, b;
+
+int main(int argc, char const *argv[])
+{
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+    cin&gt;&gt;a&gt;&gt;b;
+    for (int i = 0; i &lt; n; i++)
+        if (a[i]==&#39;&gt;&#39;) din[i+1] = 1;
+    for (int i = 0; i &lt; m; i++)
+        if (b[i]==&#39;^&#39;) dim[i+1] = 1;
+    if (din[1] != dim[1]) ans = false;
+    if (din[1] == dim[m]) ans = false;
+    if (din[n] == dim[1]) ans = false;
+    if (din[n] != dim[m]) ans = false;
+    if (ans) cout&lt;&lt;&quot;YES&quot;;
+    else cout&lt;&lt;&quot;NO&quot;;
+    return 0;
+}</code></pre>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-26T11:00:30.000Z">2019-08-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    几秒 读完 (大约 0 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/Tarjan/">Tarjan有向图缩点</a>
+            
+        </h1>
+        <div class="content">
+            
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/匈牙利算法/" class="image is-7by1">
+            <img class="thumbnail" src="https://ae01.alicdn.com/kf/HTB1UTQWXeP2gK0jSZFoq6yuIVXaR.jpg" alt="二分图最大匹配">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-07T01:59:04.000Z">2019-07-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 分钟 读完 (大约 1509 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/匈牙利算法/">二分图最大匹配</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><ul>
+<li><p><strong>匹配</strong>：任意两条边都没有公共端点的边的集合被称为图的一组匹配。</p>
+</li>
+<li><p><strong>最大匹配</strong>：在二分图中，包含边数最多的一组匹配。</p>
+</li>
+<li><p><strong>匹配边与非匹配边</strong>：对于任意一组匹配S，属于S的边被称为匹配边，不属于S的被称为非匹配边。</p>
+</li>
+<li><p><strong>匹配点与非匹配点</strong>：匹配边的端点被称为匹配点，非匹配边的端点被称为非匹配点。</p>
+</li>
+<li><p><strong>增广路</strong>：连结两个非匹配点的路径，使得非匹配边与匹配边交替出现。</p>
+</li>
+<li><p><strong>完备匹配</strong>:给定一张二分图，其左部、右部端点数量都为N，如果该二分图的最大匹配包含N条匹配边，则称该二分图具有完备匹配。</p>
+<p>接下来我们看几张图来帮助理解。</p>
+<p><img src="https://img.renfei.org/2013/08/2.png" alt></p>
+</li>
+</ul>
+<p>如图2，这是一个二分图。</p>
+<p><img src="https://img.renfei.org/2013/08/3.png" alt></p>
+<p>如图3，所有红色的边就是该二分图的一组<strong>匹配</strong>。很显然，两条红色的边都没有公共端点。</p>
+<p><img src="https://img.renfei.org/2013/08/4.png" alt></p>
+<p>再看图4，此时所有红色的边组成的也是一组匹配，而且是<strong>最大匹配</strong>，甚至还是<strong>完备匹配</strong>。因为匹配边的数量不能再多了，而且匹配边的数量和左右部端点数相同。</p>
+<p><img src="https://img.renfei.org/2013/08/5.png" alt></p>
+<p>如图5，又是一张二分图，红色边的是一组匹配，红色的点就是匹配点了。</p>
+<p><img src="https://img.renfei.org/2013/08/6.png" alt></p>
+<p>如图6，就是图5的一条增广路了，可以看到，第一个端点和最后一个端点都是非匹配点，途中经过的边是非匹配边，匹配边的方式交替的。</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>关于二分图匹配的问题，最常见的应该就是求二分图的最大匹配了吧。。。</p>
+<p>举个例子，看这张图：</p>
+<p><img src="https://img.renfei.org/2013/08/0.png" alt></p>
+<p>图中男女可以凑成一对的被连上了边，那我们要尽可能的促成他人的爱情，抽象出来，也就是求二分图最大匹配了。</p>
+<p>（虽然我觉得这样的人际关系很渣，但没办法它是服务于学术的呢。。。）</p>
+<p><img src="https://ae01.alicdn.com/kf/HTB1m7sRXbr1gK0jSZFDq6z9yVXaR.jpg" alt></p>
+<p>为了解决这么一个<del>渣男渣女</del>问题，我们需要用到一个和这个问题一样让人感觉不太舒服的算法（笑。</p>
+<h1 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h1><p><strong>匈牙利算法</strong>，又称<strong>增广路算法</strong>，顾名思义，运用到了增广路的性质，这里就对增广路的一些性质进行补充。</p>
+<h3 id="增广路的性质（建议结合上面增广路的定义看）"><a href="#增广路的性质（建议结合上面增广路的定义看）" class="headerlink" title="增广路的性质（建议结合上面增广路的定义看）"></a>增广路的性质（建议结合上面增广路的定义看）</h3><ul>
+<li>长度为奇数，这是显然的，因为是交替的嘛。</li>
+<li>路径上第奇数号的边是非匹配边，偶数号的是匹配边。</li>
+</ul>
+<p>看到以上性质，你有没有明白些什么？？</p>
+<p>没有，好，那就容我BB两句。<del>有我也要BB</del></p>
+<p>如果我们把增广路上的每条边状态取反，就能得到一个新匹配S’，而且比原来的匹配S大了1！</p>
+<p>进一步我们可以得到推论：</p>
+<p>==二分图的一组匹配S是最大匹配，当且仅当图中不存在S的增广路。==</p>
+<h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><p>有了以上知识，我们可以开始看匈牙利算法的过程了：</p>
+<ol>
+<li>设S为空集，即所有边都是非匹配边。</li>
+<li>寻找增广路，再把路径上所有边的匹配状态取反，得到了一个更大的匹配S’。</li>
+</ol>
+<p>算法的关键在于，怎么找到一条增广路。</p>
+<p>事实上这还是挺简单的，也没啥高深思想。就是尝试给每个左部节点去找右部节点来匹配。右部节点y能与左部节点x匹配，需要满足下列条件之一：</p>
+<ol>
+<li>y本身就是非匹配点。此时边(x,y)本身就是一条增广路了，长度为1。</li>
+<li>y已经和左部节点x’匹配了，但可以从x’出发找到另一个右部节点y’与之匹配。那我们就把x’和y’连上，再连x和y。这样，x-&gt;y-&gt;x’-&gt;y’就构成了一条增广路。</li>
+</ol>
+<p>程序方面，这里是用深度优先搜索实现的。递归地从x出发寻找增广路，如果找到了，就在回溯的同时对沿路的边进行取反。还要同时用全局vis数组来记录访问状态，避免重复搜索。</p>
+<p>这里再推荐一个简单易懂的<a href="https://blog.csdn.net/dark_scope/article/details/8880547" target="_blank" rel="noopener">文章</a>，不清楚的同学可以再去看看。</p>
+<p>匈牙利算法的正确性基于贪心思想，因为一旦一个点成为了匹配点，至多因为找到增广路而更换匹配对象，不会再变回非匹配点。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><pre><code class="c++">bool dfs(int x)
+{
+    for(int e=head[x];e;e=nxt[e])
+    {
+        int y=ver[e];
+        if(vis[y]) continue;
+        if(!match[y]||dfs(match[y])) //match记录匹配点
+        {
+            match[y]=x;    //修改匹配点，递归查找增广路
+            return true;
+        }
+    }
+    return false;
+}
+
+int main()
+{
+    for(int i=1;i&lt;=n;i++)
+    {
+        memset(vis,0,sizeof(vis));    //每次搜完记得初始化访问状态
+        if(dfs(i)) ans++;
+    }
+}</code></pre>
+<h3 id="适用情况"><a href="#适用情况" class="headerlink" title="适用情况"></a>适用情况</h3><p>二分图匹配能适用的模型有两个要素：</p>
+<ol>
+<li>节点能分成两个独立的集合，每个集合内部有0条边。</li>
+<li>每个节点只能与1条匹配边相连。</li>
+</ol>
+<p>同时满足以上两个要素，就该考虑使用二分图匹配了。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/欢迎页/" class="image is-7by1">
+            <img class="thumbnail" src="https://pic.superbed.cn/item/5d1f0cd6451253d178dfedbf.jpg" alt="欢迎来到我的博客！">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-05T08:12:25.000Z">2019-07-05</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    几秒 读完 (大约 26 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/欢迎页/">欢迎来到我的博客！</a>
+            
+        </h1>
+        <div class="content">
+            <p>这里是ZXJ_Hans的博客，我会在这里记录_各种东西_，欢迎来看。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="https://ae01.alicdn.com/kf/HTB17VpIXa61gK0jSZFlq6xDKFXai.jpg" alt="ZXJ_Hans">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        ZXJ_Hans
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        胜固欣然，败也从容
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>江西，赣州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        5
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/ZXJNVRGVP" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/ZXJNVRGVP">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Weibo" href="https://weibo.com/u/5681449454?topnav=1&amp;wvr=6&amp;topsug=1">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://google.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Google</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">google.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://baidu.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Baidu</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">baidu.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://zhihu.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Zhihu</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">zhihu.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://Weibo.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Weibo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">weibo.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/算法/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/题解/">
+            <span class="level-start">
+                <span class="level-item">题解</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/题解/" style="font-size: 10px;">-题解</a> <a href="/tags/dp/" style="font-size: 10px;">dp</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/欢迎/" style="font-size: 10px;">欢迎</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/P1196/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="P1196">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-21T06:50:17.000Z">2019-09-21</time></div>
+                    <a href="/P1196/" class="has-link-black-ter is-size-6">P1196</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/搭配购买/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://sm.ms/image/SH76lZgnWJIUpmQ" alt="题解 luogu P1455 【搭配购买】">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-26T11:53:49.000Z">2019-08-26</time></div>
+                    <a href="/搭配购买/" class="has-link-black-ter is-size-6">题解 luogu P1455 【搭配购买】</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Strongly Conected City/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://sm.ms/image/Lbgh3eBstJZcKNf" alt="题解 CF475B 【Strongly Connected City】">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-26T11:18:37.000Z">2019-08-26</time></div>
+                    <a href="/Strongly Conected City/" class="has-link-black-ter is-size-6">题解 CF475B 【Strongly Connected City】</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Tarjan/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Tarjan有向图缩点">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-26T11:00:30.000Z">2019-08-26</time></div>
+                    <a href="/Tarjan/" class="has-link-black-ter is-size-6">Tarjan有向图缩点</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/匈牙利算法/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://ae01.alicdn.com/kf/HTB1UTQWXeP2gK0jSZFoq6yuIVXaR.jpg" alt="二分图最大匹配">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-07T01:59:04.000Z">2019-07-07</time></div>
+                    <a href="/匈牙利算法/" class="has-link-black-ter is-size-6">二分图最大匹配</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/题解/">
+                        <span class="tag">-题解</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/dp/">
+                        <span class="tag">dp</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/图论/">
+                        <span class="tag">图论</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/并查集/">
+                        <span class="tag">并查集</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/欢迎/">
+                        <span class="tag">欢迎</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/P1196/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="P1196">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-21T06:50:17.000Z">2019-09-21</time></div>
+                    <a href="/P1196/" class="has-link-black-ter is-size-6">P1196</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/搭配购买/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://sm.ms/image/SH76lZgnWJIUpmQ" alt="题解 luogu P1455 【搭配购买】">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-26T11:53:49.000Z">2019-08-26</time></div>
+                    <a href="/搭配购买/" class="has-link-black-ter is-size-6">题解 luogu P1455 【搭配购买】</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Strongly Conected City/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://sm.ms/image/Lbgh3eBstJZcKNf" alt="题解 CF475B 【Strongly Connected City】">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-26T11:18:37.000Z">2019-08-26</time></div>
+                    <a href="/Strongly Conected City/" class="has-link-black-ter is-size-6">题解 CF475B 【Strongly Connected City】</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Tarjan/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Tarjan有向图缩点">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-26T11:00:30.000Z">2019-08-26</time></div>
+                    <a href="/Tarjan/" class="has-link-black-ter is-size-6">Tarjan有向图缩点</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/匈牙利算法/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://ae01.alicdn.com/kf/HTB1UTQWXeP2gK0jSZFoq6yuIVXaR.jpg" alt="二分图最大匹配">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-07T01:59:04.000Z">2019-07-07</time></div>
+                    <a href="/匈牙利算法/" class="has-link-black-ter is-size-6">二分图最大匹配</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/题解/">
+                        <span class="tag">-题解</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/dp/">
+                        <span class="tag">dp</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/图论/">
+                        <span class="tag">图论</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/并查集/">
+                        <span class="tag">并查集</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/欢迎/">
+                        <span class="tag">欢迎</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="ZXJ_Hans&#39; Blog" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 ZXJ_Hans&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Weibo" href="https://weibo.com/u/5681449454?topnav=1&amp;wvr=6&amp;topsug=1">
+                        
+                        <i class="fab fa-weibo"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

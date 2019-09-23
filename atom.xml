@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>ZXJ_Hans&#39; Blog</title>
+  <title>Hanzire&#39;s Blog</title>
   
-  
+  <subtitle>人间有味是清欢。</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
@@ -10,7 +10,7 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>ZXJ_Hans</name>
+    <name>Hanzire</name>
     
   </author>
   

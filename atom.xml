@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-23T08:03:02.762Z</updated>
+  <updated>2019-09-23T08:29:55.074Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>灯泡（清华集训2015）题解</title>
+    <link href="http://yoursite.com/%E7%81%AF%E6%B3%A1%EF%BC%88%E6%B8%85%E5%8D%8E%E9%9B%86%E8%AE%AD2015%EF%BC%89%E9%A2%98%E8%A7%A3/"/>
+    <id>http://yoursite.com/灯泡（清华集训2015）题解/</id>
+    <published>2019-09-23T08:27:55.000Z</published>
+    <updated>2019-09-23T08:29:55.074Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>Compared to wildleopard’s wealthiness, his brother mildleopard is rather poor. His house is narrow and he has only one light bulb in his house. Every night, he is wandering in his incommodious house, thinking of how to earn more money. One day, he found that the length of his shadow was changing from time to time while walking between the light bulb and the wall of his house. A sudden thought ran through his mind and he wanted to know the maximum length of his shadow.</p><h1 id="Intput"><a href="#Intput" class="headerlink" title="Intput"></a>Intput</h1><p>The first line of the input contains an integer T (T &lt;= 100), indicating the number of cases.</p><p>Each test case contains three real numbers H, h and D in one line. H is the height of the light bulb while h is the height of mildleopard. D is distance between the light bulb and the wall. All numbers are in range from 10-2 to 103, both inclusive, and H - h &gt;= 10-2.</p><h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>For each test case, output the maximum length of mildleopard’s shadow in one line, accurate up to three decimal places..</p><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>3</p><p>2 1 0.5</p><p>2 0.5 3</p><p>4 3 4</p><p><strong>Sample Output</strong></p><p>1.000</p><p>0.750</p><p>4.000</p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>这道题是一道三分的经典例题，<del>但我就是不用三分</del>，我用数学。</p><p>首先影子的长度可以分为两个部分：影子有的在墙上的时候和全不在墙上的时候。<br>在第二种情况比较简单，通过相似三角形的知识可以得出一个一次函数。<br>第一种情况，仔细想想，恍然大悟，显然是一个双勾函数。</p><p>把整个房间想象成一个平面直角坐标系，设灯泡坐标为（0，H）。我们定义一个函数shadow.表示影子长度关于人坐标与灯泡的水平距离的函数。我们可以求出一个值sw，表示当影子正好处于墙角位置时，人与灯泡的水平距离，即x.</p><p>那么，怎么求影子的最大值呢？</p><p>前面已经讲了，影子的长度shadow关于x分为两段函数。sw就是其分界点，在D,H,h已知的情况下，可以轻易得出其函数解析式以及最值。最后要注意函数的定义域为[0,D].</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code class="cpp">#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cmath&gt;using namespace std;int T;double H,h,D,sw,ans;//sw是影子刚好到墙角时，人到灯泡水平距离 //大概分为两部分：影子到了墙上和没到墙上，分两种方法计算double f(double x){    double y=-(x+D*(H-h)/x)+(D+H);//第二段函数计算    return y;}double shadow(double x)//全题最难部分：计算影子长度 x是站的位置距灯泡水平距离 {    double s;    if(x&lt;sw) s=(h*x)/(H-h);//第一段函数计算    if(x==sw) s=D-sw;    if(x&gt;sw) s=f(x);    return s;}int main(){    scanf(&quot;%d&quot;,&amp;T);    while(T--)    {        scanf(&quot;%lf%lf%lf%&quot;,&amp;H,&amp;h,&amp;D);        sw=D-(h*D/H);        double tem1,temp,tem2;        tem1=shadow(sw);        temp=sqrt(D*(H-h));//第二段函数的最值。        if(D&lt;temp) tem2=shadow(D);//规范定义域，如“勾点”在定义域外，显然这段函数是单调递增的，最大值即为shadow(D)        else tem2=shadow(temp);        ans=max(tem1,tem2);        printf(&quot;%.3f\n&quot;,ans);    }    return 0;//Retr 0;}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;题面&quot;&gt;&lt;a href=&quot;#题面&quot; class=&quot;headerlink&quot; title=&quot;题面&quot;&gt;&lt;/a&gt;题面&lt;/h1&gt;&lt;p&gt;Compared to wildleopard’s wealthiness, his brother mildleopard is rath
+      
+    
+    </summary>
+    
+    
+      <category term="信息竞赛" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E7%AB%9E%E8%B5%9B/"/>
+    
+    
+      <category term="题解" scheme="http://yoursite.com/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>题解 P1135 【奇怪的电梯】</title>
+    <link href="http://yoursite.com/%E9%A2%98%E8%A7%A3%20P1135%20%E3%80%90%E5%A5%87%E6%80%AA%E7%9A%84%E7%94%B5%E6%A2%AF%E3%80%91/"/>
+    <id>http://yoursite.com/题解 P1135 【奇怪的电梯】/</id>
+    <published>2019-09-23T08:25:39.000Z</published>
+    <updated>2019-09-23T08:26:44.738Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>这是一道难度较低的搜索题目，很明显可以选择BFS或DFS来做，我用的是dfs;</p><p>先从a层开始搜索，我们把去过的每一层都进行标记，以免重复。对于每一层，我们可以选择向上还是向下走，如果越界或是能去的楼层已经标记，就不去了。假如已经到了目标楼层b，就用res尝试更新答案。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="cpp">#include &lt;iostream&gt;#include &lt;cstdio&gt;using namespace std;const int N = 250;const int inf = 0x3f3f3f3f;int n, a, b, ans = inf, num[N];bool vis[N];void dfs(int k, int res){    if (k == b)    {        ans = min(ans, res);        return;    }    if (res &lt; ans)    {        vis[k] = true;        if (k + num[k] &lt;= n &amp;&amp; !vis[k + num[k]])            dfs(k + num[k], res + 1);        if (k - num[k] &gt;= 1 &amp;&amp; !vis[k - num[k]])            dfs(k - num[k], res + 1);        // 如果向上或向下不越界，且相应层数没有访问过，则往该方向搜索；        vis[k] = false;        // 回溯；    }}int main(){    scanf(&quot;%d%d%d&quot;, &amp;n, &amp;a, &amp;b);    for (int i = 1; i &lt;= n; i++)        scanf(&quot;%d&quot;, &amp;num[i]);    vis[a] = true;    dfs(a, 0);    if (ans &lt; inf)        printf(&quot;%d&quot;, ans);    else        printf(&quot;-1&quot;);    // 无解时，不会更新答案，ans=inf ，输出-1；    return 0;}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;这是一道难度较低的搜索题目，很明显可以选择BFS或DFS来做，我用的是dfs;&lt;/p&gt;
+&lt;p&gt;先从a层开始搜索，我们把去过的每一层都进行标记
+      
+    
+    </summary>
+    
+    
+      <category term="信息竞赛" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E7%AB%9E%E8%B5%9B/"/>
+    
+    
+      <category term="题解" scheme="http://yoursite.com/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>题解 P3942 【将军令】</title>

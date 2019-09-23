@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-23T06:47:39.520Z</updated>
+  <updated>2019-09-23T08:03:02.762Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,89 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>题解 P3942 【将军令】</title>
+    <link href="http://yoursite.com/%E9%A2%98%E8%A7%A3%20P3942%20%E3%80%90%E5%B0%86%E5%86%9B%E4%BB%A4%E3%80%91/"/>
+    <id>http://yoursite.com/题解 P3942 【将军令】/</id>
+    <published>2019-09-23T08:01:50.000Z</published>
+    <updated>2019-09-23T08:03:02.762Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><h3 id="思路：贪心"><a href="#思路：贪心" class="headerlink" title="思路：贪心"></a>思路：贪心</h3><p>看了许多大佬的题解，都没有很详细的理论分析，所以我结合网上的写了理论证明。</p><p>在看做法之前，我们先明白两个引理。</p><p><strong>引理 1</strong>：在以 Pk 为根的子树中，至少要选择一个结点带小队。 </p><p>因为 P 距小队的距离不能超过 k，而所有与 P 距离不超过 k 的结点都在以 Pk 为根的子树，所以引理 1 成立。</p><p>现在我们知道了一棵子树中至少有一个小队，进一步，我们需要找到在哪个结点安排小队。</p><p><strong>引理 2</strong>：在 Pk 结点上安排小队不会比在其子孙结点上安排小队差。 </p><p>如果一个结点 A 与一个有小队的结点距离不超过 k，我们称 A 被 B 覆盖。我们知道， P 是整棵树深度最大的结点,它也是以 Pk 为根的子树中深度最大的结点。这样，在 Pk 放小队，整棵子树中的结点都被 Pk 覆盖。设我们在 Q 建立一个小队，它在 Pk 的 子树中不可能比 Pk 覆盖更多的结点，考虑 Pk 子树外的一个结点 R，Q 与 R 的最短路径必然经过 Pk，因此 Pk 到 R 的距离不会比 Q 到 R 的距离远。这样 Pk 在子树外能覆盖的结点不会 比 Q 在子树外部覆盖的结点少。因此，总体来说，选 Pk 都不会比选 Q 差。 这样，从最优的决策出发，我们必然要选择 Pk 建立安排小队。</p><p>好了，既然已经证明了就好办了。</p><p>把节点按深度存，先从最深的开始，找没小队且存在的最高的父亲，再dfs染上色。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="cpp">#include &quot;iostream&quot;#include &quot;cstdio&quot;#include &quot;cstring&quot;#include &quot;queue&quot;#include &quot;vector&quot;using namespace std;const int N = 1e5 + 5;int n, k, t, tot, maxdep = -1, ans;int head[N], ver[N * 2], nxt[N * 2], fa[N], dep[N];vector&lt;int&gt; deep[N];bool color[N], is[N];inline int get(){    int res = 0;    char c = getchar();    while (c &lt; &#39;0&#39; || c &gt; &#39;9&#39;)        c = getchar();    while (c &gt;= &#39;0&#39; &amp;&amp; c &lt;= &#39;9&#39;)    {        res = res * 10 + c - &#39;0&#39;;        c = getchar();    }    return res;}inline void add(int x, int y){    ver[++tot] = y;    nxt[tot] = head[x];    head[x] = tot;}void dfs(int u, int f){    fa[u] = f;    dep[u] = dep[f] + 1;    deep[dep[u]].push_back(u);    maxdep = max(maxdep, dep[u]);    for (int e = head[u]; e; e = nxt[e])    {        int v = ver[e];        if (v == f)            continue;        dfs(v, u);    }}void paint(int x, int s, int f, int al){    color[x] = true;    if (al == s)        return;    for (int e = head[x]; e; e = nxt[e])    {        int v = ver[e];        if (v == f)            continue;        paint(v, s, x, al + 1);    }}inline void solve(){    int father;    for (int i = maxdep; i &gt;= 1; i--)        for (int j = 0; j &lt; deep[i].size(); j++)        {            father = deep[i][j];            if (color[father] == true)                continue;            for (int j = k; j &gt;= 1; j--)            {                for (int p = 1; p &lt;= j; p++)                    father = fa[father];                if (father &lt;= 0 || is[father])                    continue;                paint(father, k, 0, 0);                is[father] = 1;                break;            }        }}int main(){    freopen(&quot;testdata.in&quot;, &quot;r&quot;, stdin);    freopen(&quot;test.out&quot;, &quot;w&quot;, stdout);    n = get(), k = get(), t = get();    int x, y;    if (k == 0)    {        printf(&quot;%d&quot;, n);        return 0;    }    for (int i = 1; i &lt; n; i++)    {        x = get(), y = get();        add(x, y), add(y, x);    }    dfs(1, 0);    solve();    for (int i = 1; i &lt;= n; i++)    {        if (is[i])            ans++;    }    if (!color[1])        ans++;    printf(&quot;%d&quot;, ans);    return 0;}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;算法分析&quot;&gt;&lt;a href=&quot;#算法分析&quot; class=&quot;headerlink&quot; title=&quot;算法分析&quot;&gt;&lt;/a&gt;算法分析&lt;/h2&gt;&lt;h3 id=&quot;思路：贪心&quot;&gt;&lt;a href=&quot;#思路：贪心&quot; class=&quot;headerlink&quot; title=&quot;思路：贪心&quot;&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="信息竞赛" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E7%AB%9E%E8%B5%9B/"/>
+    
+    
+      <category term="题解" scheme="http://yoursite.com/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>题解 P1828 【香甜的黄油 Sweet Butter】</title>
+    <link href="http://yoursite.com/%E9%A2%98%E8%A7%A3%20P1828%20%E3%80%90%E9%A6%99%E7%94%9C%E7%9A%84%E9%BB%84%E6%B2%B9%20Sweet%20Butter%E3%80%91/"/>
+    <id>http://yoursite.com/题解 P1828 【香甜的黄油 Sweet Butter】/</id>
+    <published>2019-09-23T07:58:56.000Z</published>
+    <updated>2019-09-23T08:00:11.627Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="SPFA最短路无STL"><a href="#SPFA最短路无STL" class="headerlink" title="SPFA最短路无STL"></a>SPFA最短路无STL</h1><p>本蒟蒻看楼上一群大佬用STL写SPFA，就想着用普通的SPFA写一篇题解。<br>看题目也知道，如果只是朴素的FLOYED肯定是会超时的，所以这里考虑使用最快的SPFA算法。<br>话不多说，上代码~~</p><pre><code class="cpp">#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;using namespace std；int n,p,c,i,j,x,y,t,min1,head,tail,tot,u;inta[801][801],b[501],dis[801],num[801],w[801][801],team[1601];bool exist[801];int main(){    cin&gt;&gt;n&gt;&gt;p&gt;&gt;c;    for(i=1;i&lt;=p;i++)        for(j=1;j&lt;=p;j++)            w[i][j]=0x7fffffff/3;  //初始化    for(i=1;i&lt;=n;i++)        cin&gt;&gt;b[i];    for(i=1;i&lt;=c;i++)     //邻接矩阵存储    {        cin&gt;&gt;x&gt;&gt;y&gt;&gt;t;        w[x][y]=w[y][x]=t;  //双向        a[x][++num[x]]=y;   //存储于每个牧场相连的牧场序号        a[y][++num[y]]=x;    }    min1=0x7fffffff/3;    for(i=1;i&lt;=p;i++)    {        for(j=1;j&lt;=p;j++) dis[j]=0x7fffffff/3;memset(team,0,sizeof(team)); //队列数组初始化memset(exist,false,sizeof(exist)); //标记数组初始化dis[i]=0;team[1]=i;head=0;tail=1;exist[i]=true; //起始点入队        do        {            head++;            head=((head-1)%1601)+1;   //循环队列，有效节约空间            u=team[head];            exist[u]=false;            for(j=1;j&lt;=num[u];j++)//循环判断每一个与头相连的点                if(dis[a[u][j]]&gt;dis[u]+w[u][a[u][j]])                {                    dis[a[u][j]]=dis[u]+w[u][a[u][j]];                    if(!exist[a[u][j]])  //入队操作                    {                        tail++;                        tail=((tail-1)%1601)+1;                        team[tail]=a[u][j];                        exist[a[u][j]]=true;                    }                }        }while(head!=tail);        tot=0;        for(j=1;j&lt;=n;j++)        tot+=dis[b[j]];        if(tot&lt;min1) min1=tot;    }    cout&lt;&lt;min1;    return 0;}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;SPFA最短路无STL&quot;&gt;&lt;a href=&quot;#SPFA最短路无STL&quot; class=&quot;headerlink&quot; title=&quot;SPFA最短路无STL&quot;&gt;&lt;/a&gt;SPFA最短路无STL&lt;/h1&gt;&lt;p&gt;本蒟蒻看楼上一群大佬用STL写SPFA，就想着用普通的SPFA写一篇
+      
+    
+    </summary>
+    
+    
+      <category term="信息竞赛" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E7%AB%9E%E8%B5%9B/"/>
+    
+    
+      <category term="题解" scheme="http://yoursite.com/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>题解 P1201 【[USACO1.1]贪婪的送礼者Greedy Gift Givers】</title>
+    <link href="http://yoursite.com/%E9%A2%98%E8%A7%A3%20P1201%20%E3%80%90%5BUSACO1.1%5D%E8%B4%AA%E5%A9%AA%E7%9A%84%E9%80%81%E7%A4%BC%E8%80%85Greedy%20Gift%20Givers%E3%80%91/"/>
+    <id>http://yoursite.com/题解 P1201 【[USACO1.1]贪婪的送礼者Greedy Gift Givers】/</id>
+    <published>2019-09-23T07:57:35.000Z</published>
+    <updated>2019-09-23T08:01:15.004Z</updated>
+    
+    <content type="html"><![CDATA[<p>简单题就是要有简单题的亚子</p><p>数据十分小，可以暴力。</p><p>先开结构体存下每个人的名字，收入和支出，按顺序读入。</p><p>输入送礼名单时，遍历一遍，匹配名字，加上平均数。</p><p>最后按顺序输出每个人的收入-支出</p><p>详细见代码。</p><pre><code class="cpp">#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;string&gt;using namespace std;int n,x,y;string b;struct node{    string name;    int in,out;} a[13];int main(){    scanf(&quot;%d&quot;,&amp;n);    for(int i=1;i&lt;=n;i++) cin&gt;&gt;a[i].name;    for(int i=1;i&lt;=n;i++)    {        cin&gt;&gt;b;        scanf(&quot;%d%d&quot;,&amp;x,&amp;y);        if(y==0) continue;              //除数不能为0        for(int j=1;j&lt;=n;j++)            if(a[j].name==b)           //string就是方便                a[j].out+=(x/y)*y;      //平均送礼        for(int j=1;j&lt;=y;j++)        {            cin&gt;&gt;b;            for(int k=1;k&lt;=n;k++)                if(a[k].name==b)                    a[k].in+=x/y;       //到账        }    }    for(int i=1;i&lt;=n;i++)        cout&lt;&lt;a[i].name&lt;&lt;&quot; &quot;&lt;&lt;a[i].in-a[i].out&lt;&lt;endl;    return 0;}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;简单题就是要有简单题的亚子&lt;/p&gt;
+&lt;p&gt;数据十分小，可以暴力。&lt;/p&gt;
+&lt;p&gt;先开结构体存下每个人的名字，收入和支出，按顺序读入。&lt;/p&gt;
+&lt;p&gt;输入送礼名单时，遍历一遍，匹配名字，加上平均数。&lt;/p&gt;
+&lt;p&gt;最后按顺序输出每个人的收入-支出&lt;/p&gt;
+&lt;p&gt;详细见代码。&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="信息竞赛" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E7%AB%9E%E8%B5%9B/"/>
+    
+    
+      <category term="题解" scheme="http://yoursite.com/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>题解P3941【入阵曲】</title>

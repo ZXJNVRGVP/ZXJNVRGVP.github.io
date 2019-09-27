@@ -272,11 +272,11 @@
                 
                 
                 
-                <a href="/categories/信息竞赛/" title="信息竞赛: 11">
+                <a href="/categories/信息竞赛/" title="信息竞赛: 13">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
                             style="background-color: #F9EBEA;">信息竞赛
-                        <span class="tag-length">11</span>
+                        <span class="tag-length">13</span>
                     </span>
                 </a>
                 
@@ -299,6 +299,103 @@
 
     <article id="articles" class="container articles">
         <div class="row tags-posts">
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/题解 P1104 【生日】/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="题解 P1104 【生日】">
+                            
+                            <span class="card-title">题解 P1104 【生日】</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Hanzire 的博客以上是打广告↑↑↑
+思路我的思路很简单，直接把年月日处理成一个数字，之间排序就OK。
+怎么处理呢？
+年，月，日，按顺序拼接，如果是0几月，0几日，就在那一位补0。这样从高位看下来，就符合从小往大排序的标准了。具体就是年
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-27
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/信息竞赛/" class="post-category">
+                                    信息竞赛
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/题解/">
+                            <span class="chip bg-color">题解</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/题解 P1125 【笨小猴】/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="题解 P1125 【笨小猴】">
+                            
+                            <span class="card-title">题解 P1125 【笨小猴】</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                我的博客以上是广告↑↑↑
+思路用最原始的字符数组读入，因为只出现小写字母，所以可以用字符-‘a’来作为桶数组的下标来储存每个字母出现的次数。
+然后筛选最大的元素和除0之外最小的元素。相减得到ans,最后判断一下素数。我这里用的是埃筛法，其实
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-27
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/信息竞赛/" class="post-category">
+                                    信息竞赛
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/题解/">
+                            <span class="chip bg-color">题解</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
@@ -339,12 +436,12 @@ T1传送门：XENTASK
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/题解/">
-                            <span class="chip bg-color">题解</span>
-                        </a>
-                        
                         <a href="/tags/做题记录/">
                             <span class="chip bg-color">做题记录</span>
+                        </a>
+                        
+                        <a href="/tags/题解/">
+                            <span class="chip bg-color">题解</span>
                         </a>
                         
                     </div>
@@ -800,66 +897,33 @@ using namespace std;
                 </div>
             </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/匈牙利算法/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="二分图最大匹配">
-                            
-                            <span class="card-title">二分图最大匹配</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                定义
-匹配：任意两条边都没有公共端点的边的集合被称为图的一组匹配。
-
-最大匹配：在二分图中，包含边数最多的一组匹配。
-
-匹配边与非匹配边：对于任意一组匹配S，属于S的边被称为匹配边，不属于S的被称为非匹配边。
-
-匹配点与非匹配点：匹配边的端
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-07-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/信息竞赛/" class="post-category">
-                                    信息竞赛
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/图论/">
-                            <span class="chip bg-color">图论</span>
-                        </a>
-                        
-                        <a href="/tags/算法/">
-                            <span class="chip bg-color">算法</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 </main>
+
+
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a class="left btn-floating btn-large disabled">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">1 / 2</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a href="/categories/信息竞赛/page/2/"
+               class="right btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
 
 
 
@@ -875,7 +939,7 @@ using namespace std;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">5.2k</span>&nbsp;字
+                class="white-color">5.6k</span>&nbsp;字
             
             
             

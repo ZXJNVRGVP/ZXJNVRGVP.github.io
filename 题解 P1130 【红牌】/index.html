@@ -4,9 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="题解 P1196 【[NOI2002]银河英雄传说】, Hanzire&#39;s Blog">
-    <meta name="description" content="算法：带权并查集这道题有两种算法，但主要思想都是并查集，区别在于是否有路径压缩。
-1. 不带路径压缩  此时fa[x]就表示排在第x号战舰前面的那个战舰的编号。集合的“代表”就是最前面的战舰的编号。  让树上每条边带上权值1，这样树上两点之">
+    <meta name="keywords" content="题解 P1130 【红牌】, Hanzire&#39;s Blog">
+    <meta name="description" content="我的博客以上是打广告
+思路分析题意，一个格子能选择往正右走还是右下走，求到最后一列得到的最小值。
+设f[N][N]为dp数组，f[j][i]代表走到第j行第i列时可能得到的最小值。我们可以得到状态转移方程：$$ f[j][i]=min(f[">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>题解 P1196 【[NOI2002]银河英雄传说】 | Hanzire&#39;s Blog</title>
+    <title>题解 P1130 【红牌】 | Hanzire&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -222,13 +223,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        题解 P1196 【[NOI2002]银河英雄传说】
+                        题解 P1130 【红牌】
                     </div>
                 </div>
             </div>
@@ -364,21 +365,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-21
+                    2019-09-28
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        616
+                        284
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        1 分
                     </div>
                     
                 
@@ -394,78 +395,40 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="算法：带权并查集"><a href="#算法：带权并查集" class="headerlink" title="算法：带权并查集"></a>算法：带权并查集</h2><p>这道题有两种算法，但主要思想都是并查集，区别在于是否有路径压缩。</p>
-<h4 id="1-不带路径压缩"><a href="#1-不带路径压缩" class="headerlink" title="1. 不带路径压缩"></a>1. 不带路径压缩</h4><p>  此时fa[x]就表示排在第x号战舰前面的那个战舰的编号。集合的“代表”就是最前面的战舰的编号。<br>  让树上每条边带上权值1，这样树上两点之间的距离-1就是二者相隔的战舰数量。<br>  注意，这样写的话在find函数中就不能加上路径压缩的优化。</p>
-<h4 id="2-带路径压缩"><a href="#2-带路径压缩" class="headerlink" title="2.带路径压缩"></a>2.带路径压缩</h4><p>  在考虑路径压缩时，我们应该在建立一个数组d，d[x]记录战舰x与fa[x]之间的边的权值。<br>  我们知道，在路径压缩时，会把x指向此时的树根。我们应该对find函数做一些修改，把d[x]更新为从x到树根的路径上的所有边权之和。</p>
-<pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">inline</span> <span class="token keyword">int</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>x<span class="token operator">==</span>f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> x<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> root<span class="token operator">=</span><span class="token function">find</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    d<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">+</span><span class="token operator">=</span>d<span class="token punctuation">[</span>f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">=</span>root<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<p>  当接收到Cxy指令时，分别执行find(x),find(y)完成查询和路径压缩。如果两者的返回值相同，则说明x,y在同一列之中。<br>  那么，d[x]和d[y]都指向了共同的树根，分别表示在x，y之前的战舰数量。二者之差再减1就是x和y之间间隔的战舰数量。<br>  当接收到Mxy指令时，把x的树根作为y的树根的子节点，连接的新边的权值应给设为合并之前集合y的大小。（因为y集合全部排在x之前）<br>  因此还需要增加一个size数组记录每个集合的大小。</p>
-<pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span><span class="token keyword">int</span> y<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    x<span class="token operator">=</span><span class="token function">find</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>y<span class="token operator">=</span><span class="token function">find</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">=</span>y<span class="token punctuation">;</span>d<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">=</span>size<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    size<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token operator">+</span><span class="token operator">=</span>size<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<p>下面是完整代码</p>
-<pre class=" language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;cstdio></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;cmath></span></span>
+                <h1 id="我的博客"><a href="#我的博客" class="headerlink" title="我的博客"></a><a href="zxjnvrgvp.github.io">我的博客</a></h1><p>以上是打广告</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>分析题意，一个格子能选择往正右走还是右下走，求到最后一列得到的最小值。</p>
+<p>设<code>f[N][N]</code>为dp数组，<code>f[j][i]</code>代表走到第<code>j</code>行第<code>i</code>列时可能得到的最小值。我们可以得到状态转移方程：<br>$$ f[j][i]=min(f[j][i-1],f[j-1][i-1])+a[j][i] $$</p>
+<p>代表状态从左方或左上方传递过来，应注意当<code>j==1</code>时，<code>f[j-1][i-1]</code>应该替换为<code>f[m][i-1]</code>。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class=" language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"iostream"</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"cstdio"</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"cstring"</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> <span class="token keyword">int</span> N<span class="token operator">=</span><span class="token number">30000</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> t<span class="token punctuation">,</span>f<span class="token punctuation">[</span>N<span class="token operator">+</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span>d<span class="token punctuation">[</span>N<span class="token operator">+</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span>size<span class="token punctuation">[</span>N<span class="token operator">+</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token number">2005</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> n<span class="token punctuation">,</span> m<span class="token punctuation">,</span> a<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> f<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> ans <span class="token operator">=</span> <span class="token number">0x3f3f3f3f</span><span class="token punctuation">;</span>
 
-<span class="token keyword">inline</span> <span class="token keyword">int</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token keyword">const</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>x<span class="token operator">==</span>f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> x<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> root<span class="token operator">=</span><span class="token function">find</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    d<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">+</span><span class="token operator">=</span>d<span class="token punctuation">[</span>f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">=</span>root<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">void</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span><span class="token keyword">int</span> y<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    x<span class="token operator">=</span><span class="token function">find</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>y<span class="token operator">=</span><span class="token function">find</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">=</span>y<span class="token punctuation">;</span>d<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">=</span>size<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    size<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token operator">+</span><span class="token operator">=</span>size<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    cin<span class="token operator">>></span>t<span class="token punctuation">;</span>
-    <span class="token keyword">char</span> o<span class="token punctuation">;</span><span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>N<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>i<span class="token punctuation">;</span>
-        d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-        size<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span>t<span class="token operator">--</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        cin<span class="token operator">>></span>o<span class="token operator">>></span>i<span class="token operator">>></span>j<span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>o<span class="token operator">==</span><span class="token string">'M'</span><span class="token punctuation">)</span> <span class="token function">merge</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>o<span class="token operator">==</span><span class="token string">'C'</span><span class="token punctuation">)</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>m<span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
         <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> x<span class="token operator">=</span><span class="token function">find</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">,</span>y<span class="token operator">=</span><span class="token function">find</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>x<span class="token operator">!=</span>y<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                cout<span class="token operator">&lt;&lt;</span><span class="token string">"-1"</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
-                <span class="token keyword">continue</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+                f<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> f<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
             <span class="token keyword">else</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">int</span> q<span class="token operator">=</span><span class="token function">abs</span><span class="token punctuation">(</span>d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span>d<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-                cout<span class="token operator">&lt;&lt;</span>q<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
+                f<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> f<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        ans <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>m<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> ans<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 
             </div>
             <hr/>
@@ -626,11 +589,11 @@
                 </a>
             </div>
             <br/>
-            <a  href="/题解 P1196 【[NOI2002]银河英雄传说】/">
-                    《题解 P1196 【[NOI2002]银河英雄传说】》
+            <a  href="/题解 P1130 【红牌】/">
+                    《题解 P1130 【红牌】》
             </a> 由
             <a href="http://zxjnvrgvp.github.io">
-                Hanzire
+                Hansire
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">
                 知识共享署名 4.0 国际许可协议
@@ -669,7 +632,7 @@
         repo: 'ZXJNVRGVP.github.io',
         owner: 'ZXJNVRGVP',
         admin: "ZXJNVRGVP",
-        id: '2019-09-21T14-50-17',
+        id: '2019-09-28T18-25-58',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -690,43 +653,32 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fas fa-chevron-left"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/题解P3941【入阵曲】/">
+                <a href="/题解 P1130 【红牌】/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="题解P3941【入阵曲】">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="题解 P1130 【红牌】">
                         
-                        <span class="card-title">题解P3941【入阵曲】</span>
+                        <span class="card-title">题解 P1130 【红牌】</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            思路60分做法：暴力+前缀和使用前缀和存储 sum[i][j] 存储(i,j)点作为右下角(1,1)作左上角的矩阵和。可以枚举每个矩阵大小。复杂度$O(n^4)$
-100分做法：找规律+小暴力先看样例：
-
-
-
-1
-2
-1
-
-
-
-2
-1
-2
-
+                            我的博客以上是打广告
+思路分析题意，一个格子能选择往正右走还是右下走，求到最后一列得到的最小值。
+设f[N][N]为dp数组，f[j][i]代表走到第j行第i列时可能得到的最小值。我们可以得到状态转移方程：$$ f[j][i]=min(f[
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-09-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -739,6 +691,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -757,30 +710,27 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/题解 P1455 【搭配购买】/">
+                <a href="/题解 P1104 【生日】/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="题解 luogu P1455 【搭配购买】">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="题解 P1104 【生日】">
                         
-                        <span class="card-title">题解 luogu P1455 【搭配购买】</span>
+                        <span class="card-title">题解 P1104 【生日】</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            正解​    正解十分简单。所有互相有关联的云可以视作捆绑销售，使用并查集合在一起，得到若干个由原来的物品组成的新物品，最后跑01背包即可。
-#include
-#include
-#include
-using namespace std;
-
-
+                            Hanzire 的博客以上是打广告↑↑↑
+思路我的思路很简单，直接把年月日处理成一个数字，之间排序就OK。
+怎么处理呢？
+年，月，日，按顺序拼接，如果是0几月，0几日，就在那一位补0。这样从高位看下来，就符合从小往大排序的标准了。具体就是年
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-08-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-27
                             </span>
                         <span class="publish-author">
                             
